@@ -1,0 +1,26 @@
+```
+class Solution {
+public:
+bool hasres=false;
+int res=0;
+int k;
+    int kthLargest(TreeNode* root, int k) {
+        this->k=k;
+        traverse(root);
+        return res;
+
+    }
+
+    void traverse(TreeNode*root){
+        if(root==nullptr||hasres)return;
+        traverse(root->right);
+        k--;
+        if(k==0){
+            res=root->val;
+            hasres=true;
+            return;
+        }
+        traverse(root->left);
+    }
+};
+```
