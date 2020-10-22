@@ -1,0 +1,31 @@
+```
+class Solution {
+public:
+    Node*pre, *head;
+    Node* treeToDoublyList(Node* root) {
+        if(root==nullptr)return root;
+        dfs(root);
+        head->left=pre;
+        pre->right=head;
+        return head;
+
+    }
+
+    void dfs(Node* root){
+        if(root==nullptr)return;
+        
+        dfs(root->left);
+        if(pre==nullptr){
+            head=root;
+        }
+        else{
+            pre->right=root;
+        }
+        root->left=pre;
+        pre=root;
+        
+        
+        dfs(root->right);
+    }
+};
+```
